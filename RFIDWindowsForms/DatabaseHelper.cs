@@ -16,9 +16,9 @@ namespace RFIDWindowsForms
 
         public static void InitializeDatabase()
         {
-            if (!File.Exists(@"C:\Users\ВикторАДиндев\source\repos\RFIDWindowsForms\xsqlite.db"))
+            if (!File.Exists(@"C:\xsqlite.db"))
             {
-                SQLiteConnection.CreateFile(@"C:\Users\ВикторАДиндев\source\repos\RFIDWindowsForms\xsqlite.db");
+                SQLiteConnection.CreateFile(@"C:\xsqlite.db");
 
                 using (var connection = new SQLiteConnection(connectionString))
                 {
