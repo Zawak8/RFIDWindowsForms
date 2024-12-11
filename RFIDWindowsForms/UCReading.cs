@@ -77,7 +77,8 @@ namespace RFIDWindowsForms
 
         private void btn_connect_Click(object sender, EventArgs e)
         {
-
+            DatabaseHelper dbh = new DatabaseHelper();
+            
         }
     }
 }

@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Data.SQLite;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,7 +15,55 @@ namespace RFIDWindowsForms
 {
     public partial class UCWrite : UserControl
     {
-       
+        void findSQLData(string chip)
+        {
+            string datetime = DateTime.Now.ToString("yyyyMMddHHmmss");
+            string LogFolder = @"Data Source=C:\Users\ВикторАДиндев\source\repos\RFIDWindowsForms";
+            try
+            {
+
+                //Create Connection to SQL Server
+                SqlConnection SQLConnection = new SqlConnection();
+                SQLConnection.ConnectionString = @"Data Source=C:\Users\ВикторАДиндев\source\repos\RFIDWindowsForms\xsqlite.db;Version=3;";
+
+
+                //Query for getting Count
+                string QueryFind = "select count(*) from dbo.Customer";
+                //Query for getting Name ( Returns only single value)
+                string QueryName = "select Top 1 Name  from dbo.Customer";
+
+
+
+                //Execute Queries and save results into variables
+                SqlCommand CmdCnt = SQLConnection.CreateCommand();
+                
+
+                SqlCommand CmdName = SQLConnection.CreateCommand();
+                CmdName.CommandText = QueryName;
+
+                SQLConnection.Open();
+                Int32 CustomerCnt = (Int32)CmdCnt.ExecuteScalar();
+                string CustomerName = (string)CmdName.ExecuteScalar();
+                SQLConnection.Close();
+
+                //Show values from variables
+                Console.WriteLine("CustomerName:" + CustomerName);
+                Console.WriteLine("CustomerCount:" + CustomerCnt.ToString());
+                Console.ReadLine();
+            }
+            catch (Exception exception)
+            {
+                // Create Log File for Errors
+                using (StreamWriter sw = File.CreateText(LogFolder
+                    + "\\" + "ErrorLog_" + datetime + ".log"))
+                {
+                    sw.WriteLine(exception.ToString());
+
+                }
+
+            }
+
+        }
         public UCWrite()
         {
             InitializeComponent();
@@ -30,7 +80,7 @@ namespace RFIDWindowsForms
                 cmd.CommandText = $@"SELECT * FROM employes WHERE rfid={txt_rfid_write.Text}";
                 
                 int count = Convert.ToInt32(cmd.ExecuteScalar());
-                
+                    
                 if (count == 0)
                 {
                     cmd.CommandText = $@"INSERT INTO employes (rfid, name, sirName)

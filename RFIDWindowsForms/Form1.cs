@@ -23,6 +23,7 @@ namespace RFIDWindowsForms
         private void Form1_Load(object sender, EventArgs e)
         {
             //textBox1.Clear();
+            
         }
 
         private void btn_reading_Click(object sender, EventArgs e)
