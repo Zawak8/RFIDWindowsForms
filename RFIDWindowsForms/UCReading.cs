@@ -14,6 +14,7 @@ namespace RFIDWindowsForms
 {
     public partial class UCReading : UserControl
     {
+        private string connectionString = @"Data Source=xsqlite.db;Version=3";
         public UCReading()
         {
             InitializeComponent();
@@ -24,8 +25,7 @@ namespace RFIDWindowsForms
             //TODO:
             //System.Threading.Thread.Sleep(3000);
             //txt_reader.Clear();
-            string connectionString = @"Data Source=C:\Users\ВикторАДиндев\source\repos\RFIDWindowsForms\xsqlite.db;Version=3;";
-
+            
             SQLiteConnection conn = new SQLiteConnection(connectionString);
 
             conn.Open();
