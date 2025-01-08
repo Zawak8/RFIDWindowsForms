@@ -34,12 +34,12 @@
             this.lbl_name = new System.Windows.Forms.Label();
             this.lbl_rfid = new System.Windows.Forms.Label();
             this.btn_save = new System.Windows.Forms.Button();
-            this.txt_sirName_write = new System.Windows.Forms.TextBox();
-            this.txt_name_write = new System.Windows.Forms.TextBox();
+            this.txt_secondName_write = new System.Windows.Forms.TextBox();
+            this.txt_firstName_write = new System.Windows.Forms.TextBox();
             this.txt_rfid_write = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txt_lastName_write = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -111,19 +111,19 @@
             this.btn_save.UseVisualStyleBackColor = true;
             this.btn_save.Click += new System.EventHandler(this.btn_save_Click);
             // 
-            // txt_sirName_write
+            // txt_secondName_write
             // 
-            this.txt_sirName_write.Location = new System.Drawing.Point(175, 162);
-            this.txt_sirName_write.Name = "txt_sirName_write";
-            this.txt_sirName_write.Size = new System.Drawing.Size(263, 26);
-            this.txt_sirName_write.TabIndex = 29;
+            this.txt_secondName_write.Location = new System.Drawing.Point(175, 162);
+            this.txt_secondName_write.Name = "txt_secondName_write";
+            this.txt_secondName_write.Size = new System.Drawing.Size(263, 26);
+            this.txt_secondName_write.TabIndex = 29;
             // 
-            // txt_name_write
+            // txt_firstName_write
             // 
-            this.txt_name_write.Location = new System.Drawing.Point(175, 117);
-            this.txt_name_write.Name = "txt_name_write";
-            this.txt_name_write.Size = new System.Drawing.Size(263, 26);
-            this.txt_name_write.TabIndex = 28;
+            this.txt_firstName_write.Location = new System.Drawing.Point(175, 117);
+            this.txt_firstName_write.Name = "txt_firstName_write";
+            this.txt_firstName_write.Size = new System.Drawing.Size(263, 26);
+            this.txt_firstName_write.TabIndex = 28;
             // 
             // txt_rfid_write
             // 
@@ -155,12 +155,12 @@
             this.label1.TabIndex = 37;
             this.label1.Text = "Фамилия:";
             // 
-            // textBox1
+            // txt_lastName_write
             // 
-            this.textBox1.Location = new System.Drawing.Point(175, 208);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(263, 26);
-            this.textBox1.TabIndex = 36;
+            this.txt_lastName_write.Location = new System.Drawing.Point(175, 208);
+            this.txt_lastName_write.Name = "txt_lastName_write";
+            this.txt_lastName_write.Size = new System.Drawing.Size(263, 26);
+            this.txt_lastName_write.TabIndex = 36;
             // 
             // UCWrite
             // 
@@ -168,15 +168,15 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(114)))), ((int)(((byte)(106)))));
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txt_lastName_write);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.lbl_sirName);
             this.Controls.Add(this.lbl_name);
             this.Controls.Add(this.lbl_rfid);
             this.Controls.Add(this.btn_save);
-            this.Controls.Add(this.txt_sirName_write);
-            this.Controls.Add(this.txt_name_write);
+            this.Controls.Add(this.txt_secondName_write);
+            this.Controls.Add(this.txt_firstName_write);
             this.Controls.Add(this.txt_rfid_write);
             this.Controls.Add(this.label2);
             this.Name = "UCWrite";
@@ -196,11 +196,11 @@
         private System.Windows.Forms.Label lbl_name;
         private System.Windows.Forms.Label lbl_rfid;
         private System.Windows.Forms.Button btn_save;
-        private System.Windows.Forms.TextBox txt_sirName_write;
-        private System.Windows.Forms.TextBox txt_name_write;
+        private System.Windows.Forms.TextBox txt_secondName_write;
+        private System.Windows.Forms.TextBox txt_firstName_write;
         private System.Windows.Forms.TextBox txt_rfid_write;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txt_lastName_write;
     }
 }

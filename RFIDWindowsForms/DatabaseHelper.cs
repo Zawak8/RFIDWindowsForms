@@ -12,13 +12,13 @@ namespace RFIDWindowsForms
 {
     internal class DatabaseHelper
     {
-        private static string connectionString = @"Data Source=C:\Users\ВикторАДиндев\source\repos\RFIDWindowsForms\xsqlite.db;Version=3;";
+        private static string connectionString = @"Data Source=xsqlite.db;Version=3;";
 
         public static void InitializeDatabase()
         {
-            if (!File.Exists(@"C:\Users\ВикторАДиндев\source\repos\RFIDWindowsForms\xsqlite.db"))
+            if (!File.Exists(@"xsqlite.db"))
             {
-                SQLiteConnection.CreateFile(@"C:\Users\ВикторАДиндев\source\repos\RFIDWindowsForms\xsqlite.db");
+                SQLiteConnection.CreateFile(@"xsqlite.db");
 
                 using (var connection = new SQLiteConnection(connectionString))
                 {
@@ -27,23 +27,23 @@ namespace RFIDWindowsForms
                     string createEmployesTableQuery = @"
                         CREATE TABLE IF NOT EXISTS employees (
                             Id INTEGER PRIMARY KEY AUTOINCREMENT,
-                            Name TEXT NOT NULL,
-                            SecondName TEXT NOT NULL,
-                            LastName TEXT NOT NULL,
-                            RFID TEXT NOT NULL
+                            FirstName TEXT,
+                            SecondName TEXT,
+                            LastName TEXT ,
+                            RFID TEXT
                         );";
                     string createDateTableQuery = @"
                         CREATE TABLE IF NOT EXISTS date (
                             Id INTEGER PRIMARY KEY AUTOINCREMENT,
+                            Date DATE, 
                             EmployeeId INTEGER NOT NULL,
-                            FOREIGN KEY(EmployeeId) REFERENCES employees(Id),
-                            Date DATE 
+                            FOREIGN KEY(EmployeeId) REFERENCES employees(Id)
                         );";
                     using (var command = new SQLiteCommand(connection))
                     {
                         command.CommandText = createEmployesTableQuery;
                         command.ExecuteNonQuery();
-
+                        
                         command.CommandText = createDateTableQuery;
                         command.ExecuteNonQuery();
                     }
@@ -51,35 +51,36 @@ namespace RFIDWindowsForms
             }
         }
 
-        void insertSqlRfid(string name, string secondName, string lastName, string chip)
+        internal void insertSqlRfid(string firstName, string secondName, string lastName, string chip)
         {
-            string datetime = DateTime.Now.ToString("yyyyMMddHHmmss");
-            string LogFolder = @"Data Source=C:\Users\ВикторАДиндев\source\repos\RFIDWindowsForms";
+            string queryInsertEmployee = $"INSERT INTO employees(FirstName, SecondName, LastName, RFID)" +
+                                $"VALUES(@FirstName, @SecondName, @LastName, @RFID)";
             try
             {
+                // Open a new database connection
+                using (var connection = new SQLiteConnection(connectionString))
+                {
+                    connection.Open();
 
-                //Create Connection to SQL Server
-                SqlConnection SQLConnection = new SqlConnection();
-                SQLConnection.ConnectionString = @"Data Source=C:\Users\ВикторАДиндев\source\repos\RFIDWindowsForms\xsqlite.db;Version=3;";
+                    // Bind parameters values
+                    using (var insertDataCommand = new SQLiteCommand(queryInsertEmployee, connection))
+                    {
+//                        insertDataCommand.Parameters.AddWithValue("@ID", id);
+                        insertDataCommand.Parameters.AddWithValue("@FirstName", firstName);
+                        insertDataCommand.Parameters.AddWithValue("@SecondName", secondName);
+                        insertDataCommand.Parameters.AddWithValue("@LastName", lastName);
+                        insertDataCommand.Parameters.AddWithValue("@RFID", chip);
 
-                string QueryRfid = $"INSERT INTO Employees(FirstName, SecondName, LastName, RFID)" +
-                                $"VALUES({name}, {secondName}, {lastName}, {chip})";
-
-                //Execute Queries and save results into variables
-                
-                SqlCommand CmdRfid = SQLConnection.CreateCommand();
-                CmdRfid.CommandText = QueryRfid;
-
-                SQLConnection.Open();
-                CmdRfid.CommandText = QueryRfid;
-                CmdRfid.ExecuteNonQuery();
-                SQLConnection.Close();
+                    // Execute the INSERT statement
+                    var rowInserted = insertDataCommand.ExecuteNonQuery();
+                    }
+                    connection.Close();
+                }
             }
-            catch (Exception exception)
+            catch (SQLiteException ex)
             {
-                MessageBox.Show(exception.Message);
+                Console.WriteLine(ex.Message);
             }
-
         }
 
         void findSqlRfid(string chip)
