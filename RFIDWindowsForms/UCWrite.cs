@@ -24,7 +24,7 @@ namespace RFIDWindowsForms
 
                 //Create Connection to SQL Server
                 SqlConnection SQLConnection = new SqlConnection();
-                SQLConnection.ConnectionString = @"Data Source=C:\Users\ВикторАДиндев\source\repos\RFIDWindowsForms\xsqlite.db;Version=3;";
+                SQLConnection.ConnectionString = @"Data Source=xsqlite.db;Version=3;";
 
 
                 //Query for getting Count

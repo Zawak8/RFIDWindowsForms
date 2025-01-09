@@ -85,47 +85,43 @@ namespace RFIDWindowsForms
             }
         }
 
-        void findSqlRfid(string chip)
+        internal string findSqlRfid(string chip)
         {
-            string datetime = DateTime.Now.ToString("yyyyMMddHHmmss");
-            string LogFolder = @"Data Source=C:\Users\ВикторАДиндев\source\repos\RFIDWindowsForms";
+            string fullName = "";
+            
             try
             {
-
                 //Create Connection to SQL Server
-                SqlConnection SQLConnection = new SqlConnection();
-                SQLConnection.ConnectionString = @"Data Source=C:\Users\ВикторАДиндев\source\repos\RFIDWindowsForms\xsqlite.db;Version=3;";
-
-                string QueryRfid = $"SELECT *" +
-                                   $"FROM Employes" +
-                                   $"WHERE RFID = {chip}";
-
-                //Execute Queries and save results into variables
-
-                SqlCommand CmdRfid = SQLConnection.CreateCommand();
-                CmdRfid.CommandText = QueryRfid;
-
-                SQLConnection.Open();
-                string CustomerName = (string)CmdRfid.ExecuteScalar();
-                SQLConnection.Close();
-
-                //Show values from variables
-                Console.WriteLine("CustomerName:" + CustomerName);
-                Console.WriteLine("CustomerCount:");
-                Console.ReadLine();
-            }
-            catch (Exception exception)
-            {
-                // Create Log File for Errors
-                using (StreamWriter sw = File.CreateText(LogFolder
-                    + "\\" + "ErrorLog_" + datetime + ".log"))
+                using (SQLiteConnection connection = new SQLiteConnection(connectionString))
                 {
-                    sw.WriteLine(exception.ToString());
+                    connection.Open();
+                    string findFirstNameQuery = $"SELECT FirstName" +
+                                           $"FROM Employes" +
+                                           $"WHERE RFID = @rfid";
 
+                    using(SQLiteCommand command = new SQLiteCommand(findFirstNameQuery, connection))
+                    {
+                        string firstName = command.ExecuteScalar().ToString();
+                        fullName += firstName + " ";
+                    }
+                    
+                    string findLastNameQuery = $"SELECT LastName" +
+                                               $"FROM Employes" +
+                                               $"WHERE RFID = @rfid";
+
+                    using (SQLiteCommand command1 = new SQLiteCommand(findLastNameQuery, connection))
+                    {
+                        string lastName = command1.ExecuteScalar().ToString();
+                        fullName += lastName;
+                    }
                 }
-
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show($"Не намерен потребител\n\n{e.Message}","ERROR");
             }
 
+            return fullName;
         }
 
         internal void fillTable()

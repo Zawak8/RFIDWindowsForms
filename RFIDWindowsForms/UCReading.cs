@@ -36,14 +36,6 @@ namespace RFIDWindowsForms
 
 
 
-            /*            var select = "SELECT * FROM MYTABLE";
-                        var connection = new SqlConnection(connectionString); // connection string!
-                        var Adapter = new SqlDataAdapter(select, connection);
-                        var Builder = new SqlCommandBuilder(Adapter);
-                        var myDataSet = new DataSet();
-                        Adapter.Fill(myDataSet);
-                        dataGridView_read.DataSource = myDataSet.Tables[0];
-            */
             ////
             ///
             /*

@@ -50,6 +50,7 @@
             // btn_writing
             // 
             this.btn_writing.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(176)))), ((int)(((byte)(37)))));
+            this.btn_writing.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_writing.FlatAppearance.BorderSize = 0;
             this.btn_writing.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_writing.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
