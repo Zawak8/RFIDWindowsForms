@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.txt_reader = new System.Windows.Forms.TextBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridView_read = new System.Windows.Forms.DataGridView();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btn_connect = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_read)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -46,15 +46,15 @@
             this.txt_reader.TabIndex = 33;
             this.txt_reader.TextChanged += new System.EventHandler(this.txt_reader_TextChanged);
             // 
-            // dataGridView1
+            // dataGridView_read
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 301);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 62;
-            this.dataGridView1.RowTemplate.Height = 28;
-            this.dataGridView1.Size = new System.Drawing.Size(730, 98);
-            this.dataGridView1.TabIndex = 32;
+            this.dataGridView_read.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView_read.Location = new System.Drawing.Point(12, 301);
+            this.dataGridView_read.Name = "dataGridView_read";
+            this.dataGridView_read.RowHeadersWidth = 62;
+            this.dataGridView_read.RowTemplate.Height = 28;
+            this.dataGridView_read.Size = new System.Drawing.Size(730, 98);
+            this.dataGridView_read.TabIndex = 32;
             // 
             // pictureBox1
             // 
@@ -93,13 +93,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(216)))), ((int)(((byte)(208)))));
             this.Controls.Add(this.txt_reader);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dataGridView_read);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btn_connect);
             this.Controls.Add(this.label1);
             this.Name = "UCReading";
             this.Size = new System.Drawing.Size(755, 410);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_read)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -109,7 +109,7 @@
         #endregion
 
         private System.Windows.Forms.TextBox txt_reader;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridView_read;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btn_connect;
         private System.Windows.Forms.Label label1;

@@ -7,6 +7,7 @@ using System.Data.SQLite;
 using System.IO;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Data;
 
 namespace RFIDWindowsForms
 {
@@ -50,6 +51,7 @@ namespace RFIDWindowsForms
                 }
             }
         }
+
 
         internal void insertSqlRfid(string firstName, string secondName, string lastName, string chip)
         {
@@ -126,5 +128,18 @@ namespace RFIDWindowsForms
 
         }
 
+        internal void fillTable()
+        {
+            SQLiteConnection conn = new SQLiteConnection(connectionString);
+
+            conn.Open();
+
+            string query = $"SELECT * FROM employees";
+            SQLiteCommand cmd = new SQLiteCommand(query, conn);
+
+            DataTable dt = new DataTable();
+            SQLiteDataAdapter adapter = new SQLiteDataAdapter(cmd);
+            adapter.Fill(dt);
+        }
     }
 }

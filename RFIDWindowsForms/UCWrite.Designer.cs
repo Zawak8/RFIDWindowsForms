@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridView_write = new System.Windows.Forms.DataGridView();
             this.lbl_sirName = new System.Windows.Forms.Label();
             this.lbl_name = new System.Windows.Forms.Label();
             this.lbl_rfid = new System.Windows.Forms.Label();
@@ -41,7 +41,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txt_lastName_write = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_write)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -54,15 +54,15 @@
             this.pictureBox1.TabIndex = 35;
             this.pictureBox1.TabStop = false;
             // 
-            // dataGridView1
+            // dataGridView_write
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 301);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 62;
-            this.dataGridView1.RowTemplate.Height = 28;
-            this.dataGridView1.Size = new System.Drawing.Size(730, 98);
-            this.dataGridView1.TabIndex = 34;
+            this.dataGridView_write.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView_write.Location = new System.Drawing.Point(12, 301);
+            this.dataGridView_write.Name = "dataGridView_write";
+            this.dataGridView_write.RowHeadersWidth = 62;
+            this.dataGridView_write.RowTemplate.Height = 28;
+            this.dataGridView_write.Size = new System.Drawing.Size(730, 98);
+            this.dataGridView_write.TabIndex = 34;
             // 
             // lbl_sirName
             // 
@@ -106,7 +106,7 @@
             this.btn_save.Location = new System.Drawing.Point(301, 254);
             this.btn_save.Name = "btn_save";
             this.btn_save.Size = new System.Drawing.Size(137, 41);
-            this.btn_save.TabIndex = 30;
+            this.btn_save.TabIndex = 31;
             this.btn_save.Text = "ЗАПИШИ";
             this.btn_save.UseVisualStyleBackColor = true;
             this.btn_save.Click += new System.EventHandler(this.btn_save_Click);
@@ -160,7 +160,7 @@
             this.txt_lastName_write.Location = new System.Drawing.Point(175, 208);
             this.txt_lastName_write.Name = "txt_lastName_write";
             this.txt_lastName_write.Size = new System.Drawing.Size(263, 26);
-            this.txt_lastName_write.TabIndex = 36;
+            this.txt_lastName_write.TabIndex = 30;
             // 
             // UCWrite
             // 
@@ -170,7 +170,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txt_lastName_write);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dataGridView_write);
             this.Controls.Add(this.lbl_sirName);
             this.Controls.Add(this.lbl_name);
             this.Controls.Add(this.lbl_rfid);
@@ -182,7 +182,7 @@
             this.Name = "UCWrite";
             this.Size = new System.Drawing.Size(755, 410);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_write)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -191,7 +191,7 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridView_write;
         private System.Windows.Forms.Label lbl_sirName;
         private System.Windows.Forms.Label lbl_name;
         private System.Windows.Forms.Label lbl_rfid;

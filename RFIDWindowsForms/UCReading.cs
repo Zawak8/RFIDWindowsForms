@@ -22,22 +22,28 @@ namespace RFIDWindowsForms
 
         private void txt_reader_TextChanged(object sender, EventArgs e)
         {
-            //TODO:
-            //System.Threading.Thread.Sleep(3000);
-            //txt_reader.Clear();
+            var dbh = new DatabaseHelper();
+            try
+            {
+                dbh.fillTable();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Can not show data\n\n{ex.Message}", "ERROR",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
+
             
-            SQLiteConnection conn = new SQLiteConnection(connectionString);
 
-            conn.Open();
-            
-            string query = $"SELECT * FROM employes WHERE rfid = '{txt_reader.Text}'";
-            SQLiteCommand cmd = new SQLiteCommand(query, conn);
 
-            DataTable dt = new DataTable();
-            SQLiteDataAdapter adapter = new SQLiteDataAdapter(cmd);
-            adapter.Fill(dt);
-            dataGridView1.DataSource = dt;
 
+            /*            var select = "SELECT * FROM MYTABLE";
+                        var connection = new SqlConnection(connectionString); // connection string!
+                        var Adapter = new SqlDataAdapter(select, connection);
+                        var Builder = new SqlCommandBuilder(Adapter);
+                        var myDataSet = new DataSet();
+                        Adapter.Fill(myDataSet);
+                        dataGridView_read.DataSource = myDataSet.Tables[0];
+            */
             ////
             ///
             /*
