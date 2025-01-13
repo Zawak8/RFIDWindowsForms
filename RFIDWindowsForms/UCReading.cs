@@ -22,17 +22,31 @@ namespace RFIDWindowsForms
 
         private void txt_reader_TextChanged(object sender, EventArgs e)
         {
-            var dbh = new DatabaseHelper();
-            try
+            if (txt_reader.Text.Length >= 10)
             {
-                dbh.fillTable();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Can not show data\n\n{ex.Message}", "ERROR",MessageBoxButtons.OK,MessageBoxIcon.Error);
+
+                var dbh = new DatabaseHelper();
+                try
+                {
+
+                    var dt = new DataTable();
+                    dt.Columns.Add("FULL NAME");
+                    dt.Columns.Add("ACCEPTED RFID CHIP");
+                    dt.Rows.Add(dbh.findSqlRfid(txt_reader.Text), "OKEY");
+                    dataGridView_read.DataSource = dt;
+
+
+                    //dataGridView_read.DataSource = dbh.fillTable();
+                    //dataGridView_read.Rows.Clear();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Can not show data\n\n{ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
             }
 
-            
+
 
 
 

@@ -52,7 +52,6 @@ namespace RFIDWindowsForms
             }
         }
 
-
         internal void insertSqlRfid(string firstName, string secondName, string lastName, string chip)
         {
             string queryInsertEmployee = $"INSERT INTO employees(FirstName, SecondName, LastName, RFID)" +
@@ -84,7 +83,7 @@ namespace RFIDWindowsForms
                 Console.WriteLine(ex.Message);
             }
         }
-
+        
         internal string findSqlRfid(string chip)
         {
             string fullName = "";
@@ -95,23 +94,25 @@ namespace RFIDWindowsForms
                 using (SQLiteConnection connection = new SQLiteConnection(connectionString))
                 {
                     connection.Open();
-                    string findFirstNameQuery = $"SELECT FirstName" +
-                                           $"FROM Employes" +
-                                           $"WHERE RFID = @rfid";
+                    string findFirstNameQuery = @"SELECT FirstName 
+                                                FROM employees 
+                                                WHERE RFID = @rfid";
 
                     using(SQLiteCommand command = new SQLiteCommand(findFirstNameQuery, connection))
                     {
-                        string firstName = command.ExecuteScalar().ToString();
+                        command.Parameters.Add( new SQLiteParameter("@rfid", chip));
+                        var firstName = command.ExecuteScalar().ToString();
                         fullName += firstName + " ";
                     }
                     
-                    string findLastNameQuery = $"SELECT LastName" +
-                                               $"FROM Employes" +
-                                               $"WHERE RFID = @rfid";
+                    string findLastNameQuery = @"SELECT LastName 
+                                               FROM employees 
+                                               WHERE RFID = @rfid";
 
                     using (SQLiteCommand command1 = new SQLiteCommand(findLastNameQuery, connection))
                     {
-                        string lastName = command1.ExecuteScalar().ToString();
+                        command1.Parameters.AddWithValue("@rfid", chip);
+                        var lastName = command1.ExecuteScalar().ToString();
                         fullName += lastName;
                     }
                 }
@@ -119,12 +120,13 @@ namespace RFIDWindowsForms
             catch (Exception e)
             {
                 MessageBox.Show($"Не намерен потребител\n\n{e.Message}","ERROR");
+                
             }
 
             return fullName;
         }
 
-        internal void fillTable()
+        internal object fillTable()
         {
             SQLiteConnection conn = new SQLiteConnection(connectionString);
 
@@ -136,6 +138,7 @@ namespace RFIDWindowsForms
             DataTable dt = new DataTable();
             SQLiteDataAdapter adapter = new SQLiteDataAdapter(cmd);
             adapter.Fill(dt);
+            return dt;
         }
     }
 }
