@@ -15,6 +15,7 @@ namespace RFIDWindowsForms
     {
         private static string connectionString = @"Data Source=xsqlite.db;Version=3;";
 
+        //Creating DB file if not exist
         public static void InitializeDatabase()
         {
             if (!File.Exists(@"xsqlite.db"))

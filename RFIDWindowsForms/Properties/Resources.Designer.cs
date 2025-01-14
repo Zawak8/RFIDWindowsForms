@@ -63,6 +63,16 @@ namespace RFIDWindowsForms.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _299086_info_sign_icon {
+            get {
+                object obj = ResourceManager.GetObject("299086_info_sign_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap logoX {
             get {
                 object obj = ResourceManager.GetObject("logoX", resourceCulture);

@@ -31,14 +31,21 @@ namespace RFIDWindowsForms
         {
             ucWrite1.Hide();
             ucReading1.Show();
-            var dbh = new DatabaseHelper();
-
+            ucUpdating1.Hide();
         }
 
         private void btn_writing_Click(object sender, EventArgs e)
         {
             ucWrite1.Show();
             ucReading1.Hide();
+            ucUpdating1.Hide();
+        }
+
+        private void btn_update_Click(object sender, EventArgs e)
+        {
+            ucWrite1.Hide();
+            ucReading1.Hide();
+            ucUpdating1.Show();
         }
     }
 }

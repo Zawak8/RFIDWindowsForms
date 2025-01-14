@@ -80,6 +80,12 @@
     <Compile Include="UCReading.Designer.cs">
       <DependentUpon>UCReading.cs</DependentUpon>
     </Compile>
+    <Compile Include="UCUpdating.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCUpdating.Designer.cs">
+      <DependentUpon>UCUpdating.cs</DependentUpon>
+    </Compile>
     <Compile Include="UCWrite.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -102,6 +108,9 @@
     <EmbeddedResource Include="UCReading.resx">
       <DependentUpon>UCReading.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UCUpdating.resx">
+      <DependentUpon>UCUpdating.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UCWrite.resx">
       <DependentUpon>UCWrite.cs</DependentUpon>
     </EmbeddedResource>
@@ -121,6 +130,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\logoX.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\299086_info_sign_icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
