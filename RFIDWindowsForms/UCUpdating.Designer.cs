@@ -29,18 +29,19 @@
         private void InitializeComponent()
         {
             this.lbl_rfid = new System.Windows.Forms.Label();
-            this.txt_rfid_write = new System.Windows.Forms.TextBox();
+            this.txt_rfid_update = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.txt_lastName_write = new System.Windows.Forms.TextBox();
+            this.txt_lastName_update = new System.Windows.Forms.TextBox();
             this.lbl_sirName = new System.Windows.Forms.Label();
             this.lbl_name = new System.Windows.Forms.Label();
-            this.btn_save = new System.Windows.Forms.Button();
-            this.txt_secondName_write = new System.Windows.Forms.TextBox();
-            this.txt_firstName_write = new System.Windows.Forms.TextBox();
+            this.btn_update = new System.Windows.Forms.Button();
+            this.txt_secondName_update = new System.Windows.Forms.TextBox();
+            this.txt_firstName_update = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btn_info_update = new System.Windows.Forms.Button();
             this.dataGridView_read = new System.Windows.Forms.DataGridView();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_read)).BeginInit();
             this.SuspendLayout();
@@ -49,27 +50,27 @@
             // 
             this.lbl_rfid.AutoSize = true;
             this.lbl_rfid.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_rfid.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lbl_rfid.Location = new System.Drawing.Point(79, 73);
+            this.lbl_rfid.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lbl_rfid.Location = new System.Drawing.Point(99, 66);
             this.lbl_rfid.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.lbl_rfid.Name = "lbl_rfid";
             this.lbl_rfid.Size = new System.Drawing.Size(91, 32);
             this.lbl_rfid.TabIndex = 39;
             this.lbl_rfid.Text = "RFID:";
             // 
-            // txt_rfid_write
+            // txt_rfid_update
             // 
-            this.txt_rfid_write.Location = new System.Drawing.Point(175, 73);
-            this.txt_rfid_write.Name = "txt_rfid_write";
-            this.txt_rfid_write.Size = new System.Drawing.Size(263, 26);
-            this.txt_rfid_write.TabIndex = 38;
+            this.txt_rfid_update.Location = new System.Drawing.Point(195, 73);
+            this.txt_rfid_update.Name = "txt_rfid_update";
+            this.txt_rfid_update.Size = new System.Drawing.Size(310, 26);
+            this.txt_rfid_update.TabIndex = 38;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label2.Location = new System.Drawing.Point(129, 19);
+            this.label2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label2.Location = new System.Drawing.Point(149, 19);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(310, 32);
             this.label2.TabIndex = 37;
@@ -79,27 +80,27 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label1.Location = new System.Drawing.Point(17, 202);
+            this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label1.Location = new System.Drawing.Point(37, 202);
             this.label1.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(153, 32);
             this.label1.TabIndex = 46;
             this.label1.Text = "Фамилия:";
             // 
-            // txt_lastName_write
+            // txt_lastName_update
             // 
-            this.txt_lastName_write.Location = new System.Drawing.Point(176, 209);
-            this.txt_lastName_write.Name = "txt_lastName_write";
-            this.txt_lastName_write.Size = new System.Drawing.Size(263, 26);
-            this.txt_lastName_write.TabIndex = 42;
+            this.txt_lastName_update.Location = new System.Drawing.Point(196, 209);
+            this.txt_lastName_update.Name = "txt_lastName_update";
+            this.txt_lastName_update.Size = new System.Drawing.Size(310, 26);
+            this.txt_lastName_update.TabIndex = 42;
             // 
             // lbl_sirName
             // 
             this.lbl_sirName.AutoSize = true;
             this.lbl_sirName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_sirName.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lbl_sirName.Location = new System.Drawing.Point(22, 156);
+            this.lbl_sirName.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lbl_sirName.Location = new System.Drawing.Point(42, 156);
             this.lbl_sirName.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.lbl_sirName.Name = "lbl_sirName";
             this.lbl_sirName.Size = new System.Drawing.Size(148, 32);
@@ -110,42 +111,42 @@
             // 
             this.lbl_name.AutoSize = true;
             this.lbl_name.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_name.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lbl_name.Location = new System.Drawing.Point(88, 112);
+            this.lbl_name.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lbl_name.Location = new System.Drawing.Point(108, 111);
             this.lbl_name.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.lbl_name.Name = "lbl_name";
             this.lbl_name.Size = new System.Drawing.Size(82, 32);
             this.lbl_name.TabIndex = 44;
             this.lbl_name.Text = "Име:";
             // 
-            // btn_save
+            // btn_update
             // 
-            this.btn_save.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_save.Location = new System.Drawing.Point(302, 255);
-            this.btn_save.Name = "btn_save";
-            this.btn_save.Size = new System.Drawing.Size(137, 41);
-            this.btn_save.TabIndex = 43;
-            this.btn_save.Text = "ЗАПИШИ";
-            this.btn_save.UseVisualStyleBackColor = true;
+            this.btn_update.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_update.Location = new System.Drawing.Point(352, 254);
+            this.btn_update.Name = "btn_update";
+            this.btn_update.Size = new System.Drawing.Size(154, 41);
+            this.btn_update.TabIndex = 43;
+            this.btn_update.Text = "ПРОМЕНИ";
+            this.btn_update.UseVisualStyleBackColor = true;
             // 
-            // txt_secondName_write
+            // txt_secondName_update
             // 
-            this.txt_secondName_write.Location = new System.Drawing.Point(176, 163);
-            this.txt_secondName_write.Name = "txt_secondName_write";
-            this.txt_secondName_write.Size = new System.Drawing.Size(263, 26);
-            this.txt_secondName_write.TabIndex = 41;
+            this.txt_secondName_update.Location = new System.Drawing.Point(196, 163);
+            this.txt_secondName_update.Name = "txt_secondName_update";
+            this.txt_secondName_update.Size = new System.Drawing.Size(310, 26);
+            this.txt_secondName_update.TabIndex = 41;
             // 
-            // txt_firstName_write
+            // txt_firstName_update
             // 
-            this.txt_firstName_write.Location = new System.Drawing.Point(176, 118);
-            this.txt_firstName_write.Name = "txt_firstName_write";
-            this.txt_firstName_write.Size = new System.Drawing.Size(263, 26);
-            this.txt_firstName_write.TabIndex = 40;
+            this.txt_firstName_update.Location = new System.Drawing.Point(196, 118);
+            this.txt_firstName_update.Name = "txt_firstName_update";
+            this.txt_firstName_update.Size = new System.Drawing.Size(310, 26);
+            this.txt_firstName_update.TabIndex = 40;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::RFIDWindowsForms.Properties.Resources.logoX;
-            this.pictureBox1.Location = new System.Drawing.Point(487, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(550, 20);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(230, 262);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -174,29 +175,41 @@
             this.dataGridView_read.ReadOnly = true;
             this.dataGridView_read.RowHeadersWidth = 62;
             this.dataGridView_read.RowTemplate.Height = 28;
-            this.dataGridView_read.Size = new System.Drawing.Size(745, 200);
+            this.dataGridView_read.Size = new System.Drawing.Size(852, 271);
             this.dataGridView_read.TabIndex = 48;
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(43, 254);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(256, 41);
+            this.button1.TabIndex = 49;
+            this.button1.Text = "ПОКАЖИ ВСИЧКИ";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // UCUpdating
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(135)))), ((int)(((byte)(117)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(216)))), ((int)(((byte)(208)))));
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView_read);
             this.Controls.Add(this.btn_info_update);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.txt_lastName_write);
+            this.Controls.Add(this.txt_lastName_update);
             this.Controls.Add(this.lbl_sirName);
             this.Controls.Add(this.lbl_name);
-            this.Controls.Add(this.btn_save);
-            this.Controls.Add(this.txt_secondName_write);
-            this.Controls.Add(this.txt_firstName_write);
+            this.Controls.Add(this.btn_update);
+            this.Controls.Add(this.txt_secondName_update);
+            this.Controls.Add(this.txt_firstName_update);
             this.Controls.Add(this.lbl_rfid);
-            this.Controls.Add(this.txt_rfid_write);
+            this.Controls.Add(this.txt_rfid_update);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.pictureBox1);
             this.Name = "UCUpdating";
-            this.Size = new System.Drawing.Size(750, 500);
+            this.Size = new System.Drawing.Size(860, 575);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_read)).EndInit();
             this.ResumeLayout(false);
@@ -208,16 +221,17 @@
 
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label lbl_rfid;
-        private System.Windows.Forms.TextBox txt_rfid_write;
+        private System.Windows.Forms.TextBox txt_rfid_update;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txt_lastName_write;
+        private System.Windows.Forms.TextBox txt_lastName_update;
         private System.Windows.Forms.Label lbl_sirName;
         private System.Windows.Forms.Label lbl_name;
-        private System.Windows.Forms.Button btn_save;
-        private System.Windows.Forms.TextBox txt_secondName_write;
-        private System.Windows.Forms.TextBox txt_firstName_write;
+        private System.Windows.Forms.Button btn_update;
+        private System.Windows.Forms.TextBox txt_secondName_update;
+        private System.Windows.Forms.TextBox txt_firstName_update;
         private System.Windows.Forms.Button btn_info_update;
         private System.Windows.Forms.DataGridView dataGridView_read;
+        private System.Windows.Forms.Button button1;
     }
 }

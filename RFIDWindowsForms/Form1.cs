@@ -23,29 +23,28 @@ namespace RFIDWindowsForms
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //textBox1.Clear();
             
         }
 
         private void btn_reading_Click(object sender, EventArgs e)
         {
-            ucWrite1.Hide();
-            ucReading1.Show();
-            ucUpdating1.Hide();
+            ucWrite.Hide();
+            ucReading.Show();
+            ucUpdating.Hide();
         }
 
         private void btn_writing_Click(object sender, EventArgs e)
         {
-            ucWrite1.Show();
-            ucReading1.Hide();
-            ucUpdating1.Hide();
+            ucWrite.Show();
+            ucReading.Hide();
+            ucUpdating.Hide();
         }
 
         private void btn_update_Click(object sender, EventArgs e)
         {
-            ucWrite1.Hide();
-            ucReading1.Hide();
-            ucUpdating1.Show();
+            ucWrite.Hide();
+            ucReading.Hide();
+            ucUpdating.Show();
         }
     }
 }

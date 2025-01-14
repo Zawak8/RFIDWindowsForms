@@ -14,7 +14,7 @@ namespace RFIDWindowsForms
 {
     public partial class UCReading : UserControl
     {
-        private string connectionString = @"Data Source=xsqlite.db;Version=3";
+        //private string connectionString = @"Data Source=xsqlite.db;Version=3";
         public UCReading()
         {
             InitializeComponent();
@@ -29,14 +29,14 @@ namespace RFIDWindowsForms
                 try
                 {
 
-                    var dt = new DataTable();
+                    /*var dt = new DataTable();
                     dt.Columns.Add("FULL NAME");
                     dt.Columns.Add("ACCEPTED RFID CHIP");
                     dt.Rows.Add(dbh.findSqlRfid(txt_reader.Text), "OKEY");
                     dataGridView_read.DataSource = dt;
+*/
 
-
-                    //dataGridView_read.DataSource = dbh.fillTable();
+                    dataGridView_read.DataSource = dbh.fillTable();
                     //dataGridView_read.Rows.Clear();
                 }
                 catch (Exception ex)

@@ -32,9 +32,9 @@
             this.btn_update = new System.Windows.Forms.Button();
             this.btn_writing = new System.Windows.Forms.Button();
             this.btn_reading = new System.Windows.Forms.Button();
-            this.ucReading1 = new RFIDWindowsForms.UCReading();
-            this.ucWrite1 = new RFIDWindowsForms.UCWrite();
-            this.ucUpdating1 = new RFIDWindowsForms.UCUpdating();
+            this.ucReading = new RFIDWindowsForms.UCReading();
+            this.ucWrite = new RFIDWindowsForms.UCWrite();
+            this.ucUpdating = new RFIDWindowsForms.UCUpdating();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -47,7 +47,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(755, 90);
+            this.panel1.Size = new System.Drawing.Size(858, 90);
             this.panel1.TabIndex = 14;
             // 
             // btn_update
@@ -57,9 +57,9 @@
             this.btn_update.FlatAppearance.BorderSize = 0;
             this.btn_update.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_update.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_update.Location = new System.Drawing.Point(515, 12);
+            this.btn_update.Location = new System.Drawing.Point(572, 12);
             this.btn_update.Name = "btn_update";
-            this.btn_update.Size = new System.Drawing.Size(228, 65);
+            this.btn_update.Size = new System.Drawing.Size(274, 65);
             this.btn_update.TabIndex = 2;
             this.btn_update.Text = "ПРОМЯНА";
             this.btn_update.UseVisualStyleBackColor = false;
@@ -72,9 +72,9 @@
             this.btn_writing.FlatAppearance.BorderSize = 0;
             this.btn_writing.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_writing.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_writing.Location = new System.Drawing.Point(250, 12);
+            this.btn_writing.Location = new System.Drawing.Point(292, 12);
             this.btn_writing.Name = "btn_writing";
-            this.btn_writing.Size = new System.Drawing.Size(259, 65);
+            this.btn_writing.Size = new System.Drawing.Size(274, 65);
             this.btn_writing.TabIndex = 1;
             this.btn_writing.Text = "ВМЪКВАНЕ";
             this.btn_writing.UseVisualStyleBackColor = false;
@@ -89,44 +89,44 @@
             this.btn_reading.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_reading.Location = new System.Drawing.Point(12, 12);
             this.btn_reading.Name = "btn_reading";
-            this.btn_reading.Size = new System.Drawing.Size(232, 65);
+            this.btn_reading.Size = new System.Drawing.Size(274, 65);
             this.btn_reading.TabIndex = 0;
             this.btn_reading.Text = "ЧЕТЕНЕ";
             this.btn_reading.UseVisualStyleBackColor = false;
             this.btn_reading.Click += new System.EventHandler(this.btn_reading_Click);
             // 
-            // ucReading1
+            // ucReading
             // 
-            this.ucReading1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(216)))), ((int)(((byte)(208)))));
-            this.ucReading1.Location = new System.Drawing.Point(0, 83);
-            this.ucReading1.Name = "ucReading1";
-            this.ucReading1.Size = new System.Drawing.Size(755, 511);
-            this.ucReading1.TabIndex = 16;
+            this.ucReading.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(135)))), ((int)(((byte)(117)))));
+            this.ucReading.Location = new System.Drawing.Point(0, 90);
+            this.ucReading.Name = "ucReading";
+            this.ucReading.Size = new System.Drawing.Size(860, 575);
+            this.ucReading.TabIndex = 18;
             // 
-            // ucWrite1
+            // ucWrite
             // 
-            this.ucWrite1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(114)))), ((int)(((byte)(106)))));
-            this.ucWrite1.Location = new System.Drawing.Point(0, 83);
-            this.ucWrite1.Name = "ucWrite1";
-            this.ucWrite1.Size = new System.Drawing.Size(755, 511);
-            this.ucWrite1.TabIndex = 15;
+            this.ucWrite.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(114)))), ((int)(((byte)(106)))));
+            this.ucWrite.Location = new System.Drawing.Point(0, 90);
+            this.ucWrite.Name = "ucWrite";
+            this.ucWrite.Size = new System.Drawing.Size(860, 575);
+            this.ucWrite.TabIndex = 15;
             // 
-            // ucUpdating1
+            // ucUpdating
             // 
-            this.ucUpdating1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(135)))), ((int)(((byte)(117)))));
-            this.ucUpdating1.Location = new System.Drawing.Point(0, 83);
-            this.ucUpdating1.Name = "ucUpdating1";
-            this.ucUpdating1.Size = new System.Drawing.Size(755, 511);
-            this.ucUpdating1.TabIndex = 17;
+            this.ucUpdating.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(216)))), ((int)(((byte)(208)))));
+            this.ucUpdating.Location = new System.Drawing.Point(0, 90);
+            this.ucUpdating.Name = "ucUpdating";
+            this.ucUpdating.Size = new System.Drawing.Size(860, 575);
+            this.ucUpdating.TabIndex = 19;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(755, 593);
-            this.Controls.Add(this.ucReading1);
-            this.Controls.Add(this.ucWrite1);
-            this.Controls.Add(this.ucUpdating1);
+            this.ClientSize = new System.Drawing.Size(858, 664);
+            this.Controls.Add(this.ucReading);
+            this.Controls.Add(this.ucWrite);
+            this.Controls.Add(this.ucUpdating);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
@@ -145,9 +145,9 @@
         private System.Windows.Forms.Button btn_writing;
         private System.Windows.Forms.Button btn_reading;
         private System.Windows.Forms.Button btn_update;
-        private UCWrite ucWrite1;
-        private UCReading ucReading1;
-        private UCUpdating ucUpdating1;
+        private UCWrite ucWrite;
+        private UCReading ucReading;
+        private UCUpdating ucUpdating;
     }
 }
 
