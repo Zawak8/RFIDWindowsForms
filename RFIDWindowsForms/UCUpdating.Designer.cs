@@ -41,7 +41,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btn_info_update = new System.Windows.Forms.Button();
             this.dataGridView_read = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btn_showAll_update = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_read)).BeginInit();
             this.SuspendLayout();
@@ -179,23 +179,23 @@
             this.dataGridView_read.Size = new System.Drawing.Size(852, 271);
             this.dataGridView_read.TabIndex = 48;
             // 
-            // button1
+            // btn_showAll_update
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(43, 254);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(256, 41);
-            this.button1.TabIndex = 49;
-            this.button1.Text = "ПОКАЖИ ВСИЧКИ";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btn_showAll_update.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_showAll_update.Location = new System.Drawing.Point(43, 254);
+            this.btn_showAll_update.Name = "btn_showAll_update";
+            this.btn_showAll_update.Size = new System.Drawing.Size(256, 41);
+            this.btn_showAll_update.TabIndex = 49;
+            this.btn_showAll_update.Text = "ПОКАЖИ ВСИЧКИ";
+            this.btn_showAll_update.UseVisualStyleBackColor = true;
+            this.btn_showAll_update.Click += new System.EventHandler(this.btn_showAll_update_Click);
             // 
             // UCUpdating
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(216)))), ((int)(((byte)(208)))));
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btn_showAll_update);
             this.Controls.Add(this.dataGridView_read);
             this.Controls.Add(this.btn_info_update);
             this.Controls.Add(this.label1);
@@ -233,6 +233,6 @@
         private System.Windows.Forms.TextBox txt_firstName_update;
         private System.Windows.Forms.Button btn_info_update;
         private System.Windows.Forms.DataGridView dataGridView_read;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btn_showAll_update;
     }
 }
