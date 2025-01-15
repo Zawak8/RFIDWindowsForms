@@ -28,11 +28,18 @@ namespace RFIDWindowsForms
                 var dbh = new DatabaseHelper();
                 try
                 {
-                    
                     var dt = new DataTable();
                     dt.Columns.Add("FULL NAME");
                     dt.Columns.Add("ACCEPTED RFID CHIP");
                     dt.Rows.Add(dbh.findSqlRfid(txt_reader.Text), "OKEY");
+
+                    // Resize the master DataGridView columns to fit the newly loaded data.
+                    dataGridView_read.AutoResizeColumns();
+
+                    // Configure the details DataGridView so that its columns automatically
+                    // adjust their widths when the data changes.
+                    dataGridView_read.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+
                     dataGridView_read.DataSource = dt;
 
                     //dataGridView_read.DataSource = dbh.fillTable();
@@ -42,9 +49,9 @@ namespace RFIDWindowsForms
                 {
                     MessageBox.Show($"Can not show data\n\n{ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+                txt_reader.Text = "";
             }
         }
-
 
         private void btn_info_read_Click(object sender, EventArgs e)
         {

@@ -84,6 +84,7 @@ namespace RFIDWindowsForms
                 Console.WriteLine(ex.Message);
             }
         }
+        
         internal string findFirstName(string chip)
         {
             string firstName = "";
@@ -110,6 +111,7 @@ namespace RFIDWindowsForms
             }
             return firstName;
         }
+        
         internal string findSecondName(string chip)
         {
             string secondName = "";
@@ -136,6 +138,7 @@ namespace RFIDWindowsForms
             }
             return secondName;
         }
+        
         internal string findLastName(string chip)
         {
             string lastName = "";
@@ -162,6 +165,7 @@ namespace RFIDWindowsForms
             }
             return lastName;
         }
+        
         internal DataTable showDataChanges(string chip)
         {
             string firstName = "";
@@ -188,6 +192,7 @@ namespace RFIDWindowsForms
             }
             return dt;
         }
+        
         internal string findSqlRfid(string chip)
         {
             string fullName = "";
@@ -234,6 +239,12 @@ namespace RFIDWindowsForms
             cmd.Parameters.AddWithValue("@LastName", lastName);
             cmd.Parameters.AddWithValue("@rfid", rfid);
             cmd.ExecuteNonQuery();
+        }
+        
+        internal void timeRead()
+        {
+            SQLiteConnection connection = new SQLiteConnection(connectionString);
+
         }
     }
 }
