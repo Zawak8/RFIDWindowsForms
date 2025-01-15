@@ -168,37 +168,11 @@ namespace RFIDWindowsForms
             
             try
             {
-                //Create Connection to SQL Server
-                using (SQLiteConnection connection = new SQLiteConnection(connectionString))
-                {
-                    connection.Open();
-                    string findFirstNameQuery = @"SELECT FirstName 
-                                                FROM employees 
-                                                WHERE RFID = @rfid";
-
-                    using(SQLiteCommand command = new SQLiteCommand(findFirstNameQuery, connection))
-                    {
-                        command.Parameters.Add( new SQLiteParameter("@rfid", chip));
-                        var firstName = command.ExecuteScalar().ToString();
-                        fullName += firstName + " ";
-                    }
-                    
-                    string findLastNameQuery = @"SELECT LastName 
-                                               FROM employees 
-                                               WHERE RFID = @rfid";
-
-                    using (SQLiteCommand command1 = new SQLiteCommand(findLastNameQuery, connection))
-                    {
-                        command1.Parameters.AddWithValue("@rfid", chip);
-                        var lastName = command1.ExecuteScalarAsync().ToString();
-                        fullName += lastName;
-                    }
-                }
+                fullName = findFirstName(chip) + " " + findLastName(chip);
             }
             catch (Exception e)
             {
                 MessageBox.Show($"Не намерен потребител\n\n{e.Message}","ERROR");
-                
             }
 
             return fullName;
@@ -223,16 +197,16 @@ namespace RFIDWindowsForms
         {
             SQLiteConnection conn = new SQLiteConnection(connectionString);
             string query = @"UPDATE employees
-                            SET FirstName = @name, 
-                                SecondName = @secondName, 
-                                LastName = @lastName
+                            SET FirstName = @FirstName, 
+                                SecondName = @SecondName, 
+                                LastName = @LastName
                             WHERE RFID = @rfid";
             conn.Open();
             SQLiteCommand cmd = new SQLiteCommand(query, conn);
             cmd.Parameters.AddWithValue("@FirstName", firstName);
             cmd.Parameters.AddWithValue("@SecondName", secondName);
             cmd.Parameters.AddWithValue("@LastName", lastName);
-            cmd.Parameters.AddWithValue("@FirstName", rfid);
+            cmd.Parameters.AddWithValue("@rfid", rfid);
             cmd.ExecuteNonQuery();
         }
     }
