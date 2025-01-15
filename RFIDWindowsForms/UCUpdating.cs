@@ -30,5 +30,13 @@ namespace RFIDWindowsForms
                 MessageBox.Show($"Can not show data\n\n{ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void btn_info_update_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show($"1 - Кликнете върху полето ( RFID ).\n" +
+                            $"2 - Поставете чипа.\n" +
+                            $"3 - Променете останалите полета ( Име / Презиме / Фамилия )\n" +
+                            $"!!! НЕ ОСТАВЯЙТЕ ПРАЗНО ПОЛЕ !!!", "ИНФОРМАЦИЯ");
+        }
     }
 }

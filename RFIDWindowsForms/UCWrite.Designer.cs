@@ -47,9 +47,12 @@
             // 
             // dataGridView_write
             // 
+            this.dataGridView_write.AllowUserToAddRows = false;
+            this.dataGridView_write.AllowUserToDeleteRows = false;
             this.dataGridView_write.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView_write.Location = new System.Drawing.Point(5, 301);
             this.dataGridView_write.Name = "dataGridView_write";
+            this.dataGridView_write.ReadOnly = true;
             this.dataGridView_write.RowHeadersWidth = 62;
             this.dataGridView_write.RowTemplate.Height = 28;
             this.dataGridView_write.Size = new System.Drawing.Size(852, 271);
@@ -174,6 +177,7 @@
             this.btn_info_write.Size = new System.Drawing.Size(45, 44);
             this.btn_info_write.TabIndex = 38;
             this.btn_info_write.UseVisualStyleBackColor = true;
+            this.btn_info_write.Click += new System.EventHandler(this.btn_info_write_Click);
             // 
             // UCWrite
             // 

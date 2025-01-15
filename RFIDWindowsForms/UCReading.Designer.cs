@@ -70,6 +70,7 @@
             this.btn_info_read.Size = new System.Drawing.Size(45, 44);
             this.btn_info_read.TabIndex = 33;
             this.btn_info_read.UseVisualStyleBackColor = true;
+            this.btn_info_read.Click += new System.EventHandler(this.btn_info_read_Click);
             // 
             // pictureBox1
             // 

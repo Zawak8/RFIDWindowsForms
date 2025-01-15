@@ -77,6 +77,14 @@ namespace RFIDWindowsForms
                 txt_lastName_write.Text,
                 txt_rfid_write.Text);
         }
+
+        private void btn_info_write_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show($"1 - Кликнете върху полето ( RFID ).\n" +
+                            $"2 - Поставете новия чип.\n" +
+                            $"3 - Попълнете останалите полета ( Име / Презиме / Фамилия )\n" +
+                            $"!!! НЕ ОСТАВЯЙТЕ ПРАЗНО ПОЛЕ !!!", "ИНФОРМАЦИЯ");
+        }
     }
 }
 

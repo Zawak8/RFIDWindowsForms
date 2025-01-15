@@ -92,5 +92,13 @@ namespace RFIDWindowsForms
             DatabaseHelper dbh = new DatabaseHelper();
             
         }
+
+        private void btn_info_read_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show($"1 - Кликнете върху текстовото поле.\n" +
+                            $"2 - Поставете чипа.\n" +
+                            $"Резултата излиза в таблицата",
+                            "ИНФОРМАЦИЯ");
+        }
     }
 }

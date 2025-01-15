@@ -164,6 +164,7 @@
             this.btn_info_update.Size = new System.Drawing.Size(45, 44);
             this.btn_info_update.TabIndex = 47;
             this.btn_info_update.UseVisualStyleBackColor = true;
+            this.btn_info_update.Click += new System.EventHandler(this.btn_info_update_Click);
             // 
             // dataGridView_read
             // 
