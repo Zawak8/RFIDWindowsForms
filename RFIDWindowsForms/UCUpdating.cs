@@ -32,5 +32,22 @@ namespace RFIDWindowsForms
             var dbh = new DatabaseHelper();
             dataGridView_read.DataSource = dbh.fillTable();
         }
+
+        private void btn_update_Click(object sender, EventArgs e)
+        {
+            var dbh = new DatabaseHelper();
+            dbh.update(txt_firstName_update.Text,
+                        txt_secondName_update.Text,
+                        txt_lastName_update.Text,
+                        txt_rfid_update.Text);
+        }
+
+        private void txt_rfid_update_TextChanged(object sender, EventArgs e)
+        {
+            if (txt_rfid_update.Text.Length >= 10)
+            {
+
+            }
+        }
     }
 }

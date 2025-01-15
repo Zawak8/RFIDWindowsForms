@@ -97,9 +97,9 @@
             // btn_save
             // 
             this.btn_save.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_save.Location = new System.Drawing.Point(368, 254);
+            this.btn_save.Location = new System.Drawing.Point(351, 254);
             this.btn_save.Name = "btn_save";
-            this.btn_save.Size = new System.Drawing.Size(137, 41);
+            this.btn_save.Size = new System.Drawing.Size(154, 41);
             this.btn_save.TabIndex = 31;
             this.btn_save.Text = "ЗАПИШИ";
             this.btn_save.UseVisualStyleBackColor = true;

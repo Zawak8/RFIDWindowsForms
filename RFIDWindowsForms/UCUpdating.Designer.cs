@@ -64,6 +64,7 @@
             this.txt_rfid_update.Name = "txt_rfid_update";
             this.txt_rfid_update.Size = new System.Drawing.Size(310, 26);
             this.txt_rfid_update.TabIndex = 38;
+            this.txt_rfid_update.TextChanged += new System.EventHandler(this.txt_rfid_update_TextChanged);
             // 
             // label2
             // 
@@ -122,12 +123,13 @@
             // btn_update
             // 
             this.btn_update.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_update.Location = new System.Drawing.Point(352, 254);
+            this.btn_update.Location = new System.Drawing.Point(340, 254);
             this.btn_update.Name = "btn_update";
-            this.btn_update.Size = new System.Drawing.Size(154, 41);
+            this.btn_update.Size = new System.Drawing.Size(166, 41);
             this.btn_update.TabIndex = 43;
             this.btn_update.Text = "ПРОМЕНИ";
             this.btn_update.UseVisualStyleBackColor = true;
+            this.btn_update.Click += new System.EventHandler(this.btn_update_Click);
             // 
             // txt_secondName_update
             // 
@@ -184,7 +186,7 @@
             this.btn_showAll_update.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_showAll_update.Location = new System.Drawing.Point(43, 254);
             this.btn_showAll_update.Name = "btn_showAll_update";
-            this.btn_showAll_update.Size = new System.Drawing.Size(256, 41);
+            this.btn_showAll_update.Size = new System.Drawing.Size(272, 41);
             this.btn_showAll_update.TabIndex = 49;
             this.btn_showAll_update.Text = "ПОКАЖИ ВСИЧКИ";
             this.btn_showAll_update.UseVisualStyleBackColor = true;
