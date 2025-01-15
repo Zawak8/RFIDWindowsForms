@@ -41,7 +41,7 @@ namespace RFIDWindowsForms
                         txt_lastName_update.Text,
                         txt_rfid_update.Text);
             
-            dataGridView_updata.DataSource = dbh.showDataListChanges(txt_rfid_update.Text);
+            dataGridView_updata.DataSource = dbh.showDataChanges(txt_rfid_update.Text);
 
             txt_firstName_update.Text = "";
             txt_secondName_update.Text = "";

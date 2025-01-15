@@ -162,7 +162,7 @@ namespace RFIDWindowsForms
             }
             return lastName;
         }
-        internal DataTable showDataListChanges(string chip)
+        internal DataTable showDataChanges(string chip)
         {
             string firstName = "";
             string secondName = "";
