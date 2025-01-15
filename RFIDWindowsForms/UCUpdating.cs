@@ -30,7 +30,7 @@ namespace RFIDWindowsForms
         private void btn_showAll_update_Click(object sender, EventArgs e)
         {
             var dbh = new DatabaseHelper();
-            dataGridView_read.DataSource = dbh.fillTable();
+            dataGridView_updata.DataSource = dbh.fillTable();
         }
 
         private void btn_update_Click(object sender, EventArgs e)
@@ -40,13 +40,24 @@ namespace RFIDWindowsForms
                         txt_secondName_update.Text,
                         txt_lastName_update.Text,
                         txt_rfid_update.Text);
+            
+            dataGridView_updata.DataSource = dbh.showDataListChanges(txt_rfid_update.Text);
+
+            txt_firstName_update.Text = "";
+            txt_secondName_update.Text = "";
+            txt_lastName_update.Text = "";
+            txt_rfid_update.Text = "";
         }
 
         private void txt_rfid_update_TextChanged(object sender, EventArgs e)
         {
             if (txt_rfid_update.Text.Length >= 10)
             {
+                var dbh = new DatabaseHelper();
 
+                txt_firstName_update.Text = dbh.findFirstName(txt_rfid_update.Text);
+                txt_secondName_update.Text = dbh.findSecondName(txt_rfid_update.Text);
+                txt_lastName_update.Text = dbh.findLastName(txt_rfid_update.Text);
             }
         }
     }

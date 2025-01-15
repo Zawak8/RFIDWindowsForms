@@ -162,6 +162,32 @@ namespace RFIDWindowsForms
             }
             return lastName;
         }
+        internal DataTable showDataListChanges(string chip)
+        {
+            string firstName = "";
+            string secondName = "";
+            string lastName = "";
+            
+            var dt = new DataTable();
+            
+            try
+            {
+                firstName = findFirstName(chip);
+                secondName = findSecondName(chip);
+                lastName = findLastName(chip);
+
+                dt.Columns.Add("FirstName");
+                dt.Columns.Add("SecondName");
+                dt.Columns.Add("LastName");
+                dt.Columns.Add("RFID");
+                dt.Rows.Add(firstName, secondName, lastName, chip);
+            }
+            catch (SQLiteException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return dt;
+        }
         internal string findSqlRfid(string chip)
         {
             string fullName = "";

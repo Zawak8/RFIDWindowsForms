@@ -40,10 +40,10 @@
             this.txt_firstName_update = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btn_info_update = new System.Windows.Forms.Button();
-            this.dataGridView_read = new System.Windows.Forms.DataGridView();
+            this.dataGridView_updata = new System.Windows.Forms.DataGridView();
             this.btn_showAll_update = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_read)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_updata)).BeginInit();
             this.SuspendLayout();
             // 
             // lbl_rfid
@@ -168,18 +168,18 @@
             this.btn_info_update.UseVisualStyleBackColor = true;
             this.btn_info_update.Click += new System.EventHandler(this.btn_info_update_Click);
             // 
-            // dataGridView_read
+            // dataGridView_updata
             // 
-            this.dataGridView_read.AllowUserToAddRows = false;
-            this.dataGridView_read.AllowUserToDeleteRows = false;
-            this.dataGridView_read.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView_read.Location = new System.Drawing.Point(5, 301);
-            this.dataGridView_read.Name = "dataGridView_read";
-            this.dataGridView_read.ReadOnly = true;
-            this.dataGridView_read.RowHeadersWidth = 62;
-            this.dataGridView_read.RowTemplate.Height = 28;
-            this.dataGridView_read.Size = new System.Drawing.Size(852, 271);
-            this.dataGridView_read.TabIndex = 48;
+            this.dataGridView_updata.AllowUserToAddRows = false;
+            this.dataGridView_updata.AllowUserToDeleteRows = false;
+            this.dataGridView_updata.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView_updata.Location = new System.Drawing.Point(5, 301);
+            this.dataGridView_updata.Name = "dataGridView_updata";
+            this.dataGridView_updata.ReadOnly = true;
+            this.dataGridView_updata.RowHeadersWidth = 62;
+            this.dataGridView_updata.RowTemplate.Height = 28;
+            this.dataGridView_updata.Size = new System.Drawing.Size(852, 271);
+            this.dataGridView_updata.TabIndex = 48;
             // 
             // btn_showAll_update
             // 
@@ -198,7 +198,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(216)))), ((int)(((byte)(208)))));
             this.Controls.Add(this.btn_showAll_update);
-            this.Controls.Add(this.dataGridView_read);
+            this.Controls.Add(this.dataGridView_updata);
             this.Controls.Add(this.btn_info_update);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txt_lastName_update);
@@ -214,7 +214,7 @@
             this.Name = "UCUpdating";
             this.Size = new System.Drawing.Size(860, 575);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_read)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_updata)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -234,7 +234,7 @@
         private System.Windows.Forms.TextBox txt_secondName_update;
         private System.Windows.Forms.TextBox txt_firstName_update;
         private System.Windows.Forms.Button btn_info_update;
-        private System.Windows.Forms.DataGridView dataGridView_read;
+        private System.Windows.Forms.DataGridView dataGridView_updata;
         private System.Windows.Forms.Button btn_showAll_update;
     }
 }
