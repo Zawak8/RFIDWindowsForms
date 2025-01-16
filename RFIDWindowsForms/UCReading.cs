@@ -31,7 +31,7 @@ namespace RFIDWindowsForms
                     var dt = new DataTable();
                     dt.Columns.Add("FULL NAME");
                     dt.Columns.Add("ACCEPTED RFID CHIP");
-                    dt.Rows.Add(dbh.findSqlRfid(txt_reader.Text), "OKEY");
+                    dt.Rows.Add(dbh.findEmployeeNameByRfid(txt_reader.Text), "OKEY");
 
                     // Resize the master DataGridView columns to fit the newly loaded data.
                     dataGridView_read.AutoResizeColumns();

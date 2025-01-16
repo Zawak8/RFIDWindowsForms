@@ -33,7 +33,7 @@ namespace RFIDWindowsForms
                             FirstName TEXT,
                             SecondName TEXT,
                             LastName TEXT ,
-                            RFID TEXT
+                            RFID TEXT UNIQUE
                         );";
                     string createDateTableQuery = @"
                         CREATE TABLE IF NOT EXISTS date (
@@ -60,11 +60,12 @@ namespace RFIDWindowsForms
                                 $"VALUES(@FirstName, @SecondName, @LastName, @RFID)";
             try
             {
+                
                 // Open a new database connection
                 using (var connection = new SQLiteConnection(connectionString))
                 {
                     connection.Open();
-
+                    
                     // Bind parameters values
                     using (var insertDataCommand = new SQLiteCommand(queryInsertEmployee, connection))
                     {
@@ -81,7 +82,7 @@ namespace RFIDWindowsForms
             }
             catch (SQLiteException ex)
             {
-                Console.WriteLine(ex.Message);
+                MessageBox.Show(ex.Message);
             }
         }
         
@@ -193,7 +194,7 @@ namespace RFIDWindowsForms
             return dt;
         }
         
-        internal string findSqlRfid(string chip)
+        internal string findEmployeeNameByRfid(string chip)
         {
             string fullName = "";
             
@@ -240,7 +241,34 @@ namespace RFIDWindowsForms
             cmd.Parameters.AddWithValue("@rfid", rfid);
             cmd.ExecuteNonQuery();
         }
-        
+
+        internal string findRFID(string chip)
+        {
+            string rfid = "";
+            try
+            {
+                //Create Connection to SQL Server
+                using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+                {
+                    connection.Open();
+                    string findRFIDQuery = @"SELECT RFID 
+                                                FROM employees 
+                                                WHERE RFID = @rfid";
+
+                    using (SQLiteCommand command = new SQLiteCommand(findRFIDQuery, connection))
+                    {
+                        command.Parameters.Add(new SQLiteParameter("@rfid", chip));
+                        rfid = command.ExecuteScalar().ToString();
+                    }
+                }
+            }
+            catch (SQLiteException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return rfid;
+        }
+
         internal void timeRead()
         {
             SQLiteConnection connection = new SQLiteConnection(connectionString);
