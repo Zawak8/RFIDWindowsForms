@@ -22,34 +22,47 @@ namespace RFIDWindowsForms
 
         private void txt_reader_TextChanged(object sender, EventArgs e)
         {
+            
+            var dbh = new DatabaseHelper();
+
             if (txt_reader.Text.Length >= 10)
             {
-
-                var dbh = new DatabaseHelper();
-                try
+                if (txt_reader.Text == dbh.findRFID(txt_reader.Text))
                 {
-                    var dt = new DataTable();
-                    dt.Columns.Add("FULL NAME");
-                    dt.Columns.Add("ACCEPTED RFID CHIP");
-                    dt.Rows.Add(dbh.findEmployeeNameByRfid(txt_reader.Text), "OKEY");
+                    //TODO: adding input changes
 
-                    // Resize the master DataGridView columns to fit the newly loaded data.
-                    dataGridView_read.AutoResizeColumns();
+                    try
+                    {
+                        var dt = new DataTable();
+                        dt.Columns.Add("FULL NAME");
+                        dt.Columns.Add("ACCEPTED RFID CHIP");
+                        dt.Rows.Add(dbh.findEmployeeNameByRfid(txt_reader.Text), "OKEY");
 
-                    // Configure the details DataGridView so that its columns automatically
-                    // adjust their widths when the data changes.
-                    dataGridView_read.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+                        // Resize the master DataGridView columns to fit the newly loaded data.
+                        dataGridView_read.AutoResizeColumns();
 
-                    dataGridView_read.DataSource = dt;
+                        // Configure the details DataGridView so that its columns automatically
+                        // adjust their widths when the data changes.
+                        dataGridView_read.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
 
-                    //dataGridView_read.DataSource = dbh.fillTable();
-                    //dataGridView_read.Rows.Clear();
+                        dataGridView_read.DataSource = dt;
+
+                        //dataGridView_read.DataSource = dbh.fillTable();
+                        //dataGridView_read.Rows.Clear();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Can not show data\n\n{ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    txt_reader.Text = "";
+                    label1.ForeColor = SystemColors.ControlText;
+                    label1.Text = "ДОБРЕ ДОШЛИ";
                 }
-                catch (Exception ex)
+                else
                 {
-                    MessageBox.Show($"Can not show data\n\n{ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    label1.ForeColor = Color.Red;
+                    label1.Text = "ОПИТАЙ ПАК";
                 }
-                txt_reader.Text = "";
             }
         }
 
