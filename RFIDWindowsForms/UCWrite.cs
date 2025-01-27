@@ -23,7 +23,7 @@ namespace RFIDWindowsForms
         private void btn_save_Click(object sender, EventArgs e)
         {
             var dbh = new DatabaseHelper();
-            if (txt_rfid_write.Text.Length >= 10 && txt_rfid_write.Text == dbh.findRFID(txt_rfid_write.Text))
+            if (txt_rfid_write.Text.Length >= 10)
             {
                 dbh.insertSqlRfid(txt_firstName_write.Text,
                                     txt_secondName_write.Text,

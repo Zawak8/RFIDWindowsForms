@@ -40,7 +40,7 @@ namespace RFIDWindowsForms
                     string createDateTableQuery = @"
                         CREATE TABLE IF NOT EXISTS date (
                             Id INTEGER PRIMARY KEY AUTOINCREMENT,
-                            Date DATE NOT NULL, 
+                            Date TEXT NOT NULL, 
                             EmployeeRFID TEXT NOT NULL,
                             FOREIGN KEY(EmployeeRFID) REFERENCES employees(RFID)
                         );";
@@ -274,6 +274,7 @@ namespace RFIDWindowsForms
         internal void timeRead(string rfid)
         {
             SQLiteConnection connection = new SQLiteConnection(connectionString);
+            connection.Open();
             DateTime dateTime = DateTime.Now;
 
             /*
@@ -291,6 +292,7 @@ namespace RFIDWindowsForms
             command.Parameters.AddWithValue("@rfid", rfid);
 
             command.ExecuteNonQuery();
+            connection.Close();
         }
 
         internal void export()
