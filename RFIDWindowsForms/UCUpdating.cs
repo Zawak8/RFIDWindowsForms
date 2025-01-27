@@ -67,18 +67,16 @@ namespace RFIDWindowsForms
 
         private void btn_exportXls_Click(object sender, EventArgs e)
         {
-            /*SaveFileDialog sfd = new SaveFileDialog();
+            SaveFileDialog sfd = new SaveFileDialog();
             sfd.Filter = "Excel file|*.xlsx";
 
             if (sfd.ShowDialog() == DialogResult.OK)
             {
                 string path = sfd.FileName;
+                DatabaseHelper dbh = new DatabaseHelper();
+                dbh.export(path);
+            }
 
-            }*/
-            DatabaseHelper dbh = new DatabaseHelper();
-            dbh.export();
-            
-            
             /*
             * string currentdatetime = DateTime.Now.ToString("yyyyMMddHHmmss");
             * string LogFolder = @"D:\Files\Logs";

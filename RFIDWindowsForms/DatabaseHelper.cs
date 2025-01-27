@@ -295,14 +295,14 @@ namespace RFIDWindowsForms
             connection.Close();
         }
 
-        internal void export()
+        internal void export(string path)
         {
             string currentdatetime = DateTime.Now.ToString("yyyyMMddHHmmss");
             string queryString = @"SELECT Date, FirstName, SecondName, LastName, RFID
                                     FROM employees AS e
                                     JOIN date AS d ON e.id = d.id";
-            string filePath = @"Export.XLSX";
-
+            //string filePath = @"Export.XLSX";
+            
             try
             {
                 // Connect to the SQL Server database and retrieve the data you want to export
@@ -340,7 +340,7 @@ namespace RFIDWindowsForms
                             }
 
                             // Save the workbook and close the Excel application
-                            excelWorkbook.SaveAs(filePath);
+                            excelWorkbook.SaveAs(path);
                             excelWorkbook.Close();
                             excelApp.Quit();
                         }
