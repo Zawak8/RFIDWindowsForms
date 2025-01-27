@@ -9,6 +9,8 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Data;
 using System.Web;
+using Microsoft.Office.Interop.Excel;
+using Application = Microsoft.Office.Interop.Excel.Application;
 
 namespace RFIDWindowsForms
 {
@@ -30,17 +32,17 @@ namespace RFIDWindowsForms
                     string createEmployesTableQuery = @"
                         CREATE TABLE IF NOT EXISTS employees (
                             Id INTEGER PRIMARY KEY AUTOINCREMENT,
-                            FirstName TEXT,
-                            SecondName TEXT,
-                            LastName TEXT ,
-                            RFID TEXT UNIQUE
+                            FirstName TEXT NOT NULL,
+                            SecondName TEXT NOT NULL,
+                            LastName TEXT NOT NULL,
+                            RFID TEXT UNIQUE NOT NULL
                         );";
                     string createDateTableQuery = @"
                         CREATE TABLE IF NOT EXISTS date (
                             Id INTEGER PRIMARY KEY AUTOINCREMENT,
-                            Date DATE, 
-                            EmployeeId INTEGER NOT NULL,
-                            FOREIGN KEY(EmployeeId) REFERENCES employees(Id)
+                            Date DATE NOT NULL, 
+                            EmployeeRFID TEXT NOT NULL,
+                            FOREIGN KEY(EmployeeRFID) REFERENCES employees(RFID)
                         );";
                     using (var command = new SQLiteCommand(connection))
                     {
@@ -167,13 +169,13 @@ namespace RFIDWindowsForms
             return lastName;
         }
         
-        internal DataTable showDataChanges(string chip)
+        internal System.Data.DataTable showDataChanges(string chip)
         {
             string firstName = "";
             string secondName = "";
             string lastName = "";
             
-            var dt = new DataTable();
+            var dt = new System.Data.DataTable();
             
             try
             {
@@ -219,7 +221,7 @@ namespace RFIDWindowsForms
             string query = $"SELECT * FROM employees";
             SQLiteCommand cmd = new SQLiteCommand(query, conn);
 
-            DataTable dt = new DataTable();
+            System.Data.DataTable dt = new System.Data.DataTable();
             SQLiteDataAdapter adapter = new SQLiteDataAdapter(cmd);
             adapter.Fill(dt);
             return dt;
@@ -269,10 +271,85 @@ namespace RFIDWindowsForms
             return rfid;
         }
 
-        internal void timeRead()
+        internal void timeRead(string rfid)
         {
             SQLiteConnection connection = new SQLiteConnection(connectionString);
+            DateTime dateTime = DateTime.Now;
 
+            /*
+                    string day = dateTime.Day.ToString();
+                    string month = dateTime.Month.ToString();
+                    string year = dateTime.Year.ToString();
+            */
+            
+            string time = dateTime.ToString();
+
+            string query = @"INSERT INTO date(Date, EmployeeRFID)
+                                VALUES(@date, @rfid)";
+            SQLiteCommand command = new SQLiteCommand(query, connection);
+            command.Parameters.AddWithValue("@date", time);
+            command.Parameters.AddWithValue("@rfid", rfid);
+
+            command.ExecuteNonQuery();
+        }
+
+        internal void export()
+        {
+            string currentdatetime = DateTime.Now.ToString("yyyyMMddHHmmss");
+            string queryString = @"SELECT Date, FirstName, SecondName, LastName, RFID
+                                    FROM employees AS e
+                                    JOIN date AS d ON e.id = d.id";
+            string filePath = @"Export.XLSX";
+
+            try
+            {
+                // Connect to the SQL Server database and retrieve the data you want to export
+                using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+                {
+                    connection.Open();
+                    using (SQLiteCommand command = new SQLiteCommand(queryString, connection))
+                    {
+                        using (SQLiteDataReader reader = command.ExecuteReader())
+                        {
+                            // Create a new Excel application and workbook
+                            Application excelApp = new Application();
+                            Workbook excelWorkbook = excelApp.Workbooks.Add();
+                            Worksheet excelWorksheet = excelWorkbook.Worksheets[1];
+
+                            // Add the headers to the first row
+                            int col = 1;
+                            for (int i = 0; i < reader.FieldCount; i++)
+                            {
+                                excelWorksheet.Cells[1, col].Value2 = reader.GetName(i);
+                                col++;
+                            }
+
+                            // Iterate through the rows of data and insert them into the worksheet, starting from the second row
+                            int row = 2;
+                            while (reader.Read())
+                            {
+                                col = 1;
+                                for (int i = 0; i < reader.FieldCount; i++)
+                                {
+                                    excelWorksheet.Cells[row, col].Value2 = reader[i];
+                                    col++;
+                                }
+                                row++;
+                            }
+
+                            // Save the workbook and close the Excel application
+                            excelWorkbook.SaveAs(filePath);
+                            excelWorkbook.Close();
+                            excelApp.Quit();
+                        }
+                    }
+                }
+            }
+
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
         }
     }
 }

@@ -38,12 +38,14 @@
             this.btn_update = new System.Windows.Forms.Button();
             this.txt_secondName_update = new System.Windows.Forms.TextBox();
             this.txt_firstName_update = new System.Windows.Forms.TextBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btn_info_update = new System.Windows.Forms.Button();
             this.dataGridView_updata = new System.Windows.Forms.DataGridView();
             this.btn_showAll_update = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.btn_exportXls = new System.Windows.Forms.Button();
+            this.btn_info_update = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_updata)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // lbl_rfid
@@ -145,29 +147,6 @@
             this.txt_firstName_update.Size = new System.Drawing.Size(310, 26);
             this.txt_firstName_update.TabIndex = 40;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::RFIDWindowsForms.Properties.Resources.logoX;
-            this.pictureBox1.Location = new System.Drawing.Point(550, 20);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(230, 262);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 36;
-            this.pictureBox1.TabStop = false;
-            // 
-            // btn_info_update
-            // 
-            this.btn_info_update.BackgroundImage = global::RFIDWindowsForms.Properties.Resources._299086_info_sign_icon;
-            this.btn_info_update.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn_info_update.Cursor = System.Windows.Forms.Cursors.Help;
-            this.btn_info_update.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btn_info_update.Location = new System.Drawing.Point(3, 3);
-            this.btn_info_update.Name = "btn_info_update";
-            this.btn_info_update.Size = new System.Drawing.Size(45, 44);
-            this.btn_info_update.TabIndex = 47;
-            this.btn_info_update.UseVisualStyleBackColor = true;
-            this.btn_info_update.Click += new System.EventHandler(this.btn_info_update_Click);
-            // 
             // dataGridView_updata
             // 
             this.dataGridView_updata.AllowUserToAddRows = false;
@@ -192,11 +171,47 @@
             this.btn_showAll_update.UseVisualStyleBackColor = true;
             this.btn_showAll_update.Click += new System.EventHandler(this.btn_showAll_update_Click);
             // 
+            // btn_exportXls
+            // 
+            this.btn_exportXls.BackgroundImage = global::RFIDWindowsForms.Properties.Resources._1379793_document_excel_file_spreadsheet_table_icon;
+            this.btn_exportXls.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_exportXls.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_exportXls.Location = new System.Drawing.Point(786, 20);
+            this.btn_exportXls.Name = "btn_exportXls";
+            this.btn_exportXls.Size = new System.Drawing.Size(62, 65);
+            this.btn_exportXls.TabIndex = 50;
+            this.btn_exportXls.UseVisualStyleBackColor = true;
+            this.btn_exportXls.Click += new System.EventHandler(this.btn_exportXls_Click);
+            // 
+            // btn_info_update
+            // 
+            this.btn_info_update.BackgroundImage = global::RFIDWindowsForms.Properties.Resources._299086_info_sign_icon;
+            this.btn_info_update.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_info_update.Cursor = System.Windows.Forms.Cursors.Help;
+            this.btn_info_update.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_info_update.Location = new System.Drawing.Point(3, 3);
+            this.btn_info_update.Name = "btn_info_update";
+            this.btn_info_update.Size = new System.Drawing.Size(45, 44);
+            this.btn_info_update.TabIndex = 47;
+            this.btn_info_update.UseVisualStyleBackColor = true;
+            this.btn_info_update.Click += new System.EventHandler(this.btn_info_update_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::RFIDWindowsForms.Properties.Resources.logoX;
+            this.pictureBox1.Location = new System.Drawing.Point(550, 20);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(230, 262);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 36;
+            this.pictureBox1.TabStop = false;
+            // 
             // UCUpdating
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(216)))), ((int)(((byte)(208)))));
+            this.Controls.Add(this.btn_exportXls);
             this.Controls.Add(this.btn_showAll_update);
             this.Controls.Add(this.dataGridView_updata);
             this.Controls.Add(this.btn_info_update);
@@ -213,8 +228,8 @@
             this.Controls.Add(this.pictureBox1);
             this.Name = "UCUpdating";
             this.Size = new System.Drawing.Size(860, 575);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_updata)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -236,5 +251,7 @@
         private System.Windows.Forms.Button btn_info_update;
         private System.Windows.Forms.DataGridView dataGridView_updata;
         private System.Windows.Forms.Button btn_showAll_update;
+        private System.Windows.Forms.Button btn_exportXls;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }

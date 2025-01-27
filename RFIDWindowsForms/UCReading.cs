@@ -49,6 +49,7 @@ namespace RFIDWindowsForms
 
                         //dataGridView_read.DataSource = dbh.fillTable();
                         //dataGridView_read.Rows.Clear();
+                        dbh.timeRead(txt_reader.Text);
                     }
                     catch (Exception ex)
                     {
