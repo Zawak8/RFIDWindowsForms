@@ -44,7 +44,7 @@ namespace RFIDWindowsForms
                         txt_secondName_update.Text,
                         txt_lastName_update.Text,
                         txt_rfid_update.Text);
-            
+
             dataGridView_updata.DataSource = dbh.showDataChanges(txt_rfid_update.Text);
 
             txt_firstName_update.Text = "";
@@ -55,27 +55,32 @@ namespace RFIDWindowsForms
 
         private void txt_rfid_update_TextChanged(object sender, EventArgs e)
         {
-            if (txt_rfid_update.Text.Length >= 10)
+            try
             {
-                var dbh = new DatabaseHelper();
+                if (txt_rfid_update.Text.Length >= 10)
+                {
+                    var dbh = new DatabaseHelper();
 
-                txt_firstName_update.Text = dbh.findFirstName(txt_rfid_update.Text);
-                txt_secondName_update.Text = dbh.findSecondName(txt_rfid_update.Text);
-                txt_lastName_update.Text = dbh.findLastName(txt_rfid_update.Text);
+                    txt_firstName_update.Text = dbh.findFirstName(txt_rfid_update.Text);
+                    txt_secondName_update.Text = dbh.findSecondName(txt_rfid_update.Text);
+                    txt_lastName_update.Text = dbh.findLastName(txt_rfid_update.Text);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"No data found!\n{ex}", "ERROR");
             }
         }
 
         private void btn_exportXls_Click(object sender, EventArgs e)
         {
-            SaveFileDialog sfd = new SaveFileDialog();
-            sfd.Filter = "Excel file|*.xlsx";
+            DateForm dateForm = new DateForm();
+            dateForm.Show();
 
-            if (sfd.ShowDialog() == DialogResult.OK)
-            {
-                string path = sfd.FileName;
-                DatabaseHelper dbh = new DatabaseHelper();
-                dbh.export(path);
-            }
+
+
+
+
 
             /*
             * string currentdatetime = DateTime.Now.ToString("yyyyMMddHHmmss");

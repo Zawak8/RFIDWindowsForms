@@ -24,12 +24,11 @@ namespace RFIDWindowsForms
         {
             
             var dbh = new DatabaseHelper();
-
+           
             if (txt_reader.Text.Length >= 10)
             {
                 if (txt_reader.Text == dbh.findRFID(txt_reader.Text))
                 {
-                    //TODO: adding input changes
 
                     try
                     {
@@ -55,9 +54,11 @@ namespace RFIDWindowsForms
                     {
                         MessageBox.Show($"Can not show data\n\n{ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
+/*
                     txt_reader.Text = "";
                     label1.ForeColor = SystemColors.ControlText;
                     label1.Text = "ДОБРЕ ДОШЛИ";
+ */
                 }
                 else
                 {

@@ -274,19 +274,20 @@ namespace RFIDWindowsForms
         internal void timeRead(string rfid)
         {
             SQLiteConnection connection = new SQLiteConnection(connectionString);
-            connection.Open();
-            DateTime dateTime = DateTime.Now;
-
-            /*
-                    string day = dateTime.Day.ToString();
-                    string month = dateTime.Month.ToString();
-                    string year = dateTime.Year.ToString();
-            */
             
-            string time = dateTime.ToString();
+            connection.Open();
+            
+            DateTime dateTime = DateTime.Now;
+            
+            string day = dateTime.Day.ToString();
+            string month = dateTime.Month.ToString();
+            string year = dateTime.Year.ToString();
+                        
+            string time = $"{day}.{month}.{year}";
 
             string query = @"INSERT INTO date(Date, EmployeeRFID)
                                 VALUES(@date, @rfid)";
+            
             SQLiteCommand command = new SQLiteCommand(query, connection);
             command.Parameters.AddWithValue("@date", time);
             command.Parameters.AddWithValue("@rfid", rfid);
@@ -295,12 +296,13 @@ namespace RFIDWindowsForms
             connection.Close();
         }
 
-        internal void export(string path)
+        internal void export(string path, string start, string end)
         {
-            string currentdatetime = DateTime.Now.ToString("yyyyMMddHHmmss");
+            string currentdatetime = DateTime.Now.ToString("ddMMyyyy");
             string queryString = @"SELECT Date, FirstName, SecondName, LastName, RFID
                                     FROM employees AS e
-                                    JOIN date AS d ON e.id = d.id";
+                                    JOIN date AS d ON e.id = d.id
+                                    WHERE Date BETWEEN @start AND @end";
             //string filePath = @"Export.XLSX";
             
             try
@@ -311,6 +313,13 @@ namespace RFIDWindowsForms
                     connection.Open();
                     using (SQLiteCommand command = new SQLiteCommand(queryString, connection))
                     {
+///my code starts
+                        command.Parameters.AddWithValue("@start", start);
+                        command.Parameters.AddWithValue("@end", end);
+                        //command.ExecuteNonQuery();
+
+
+///my code stops
                         using (SQLiteDataReader reader = command.ExecuteReader())
                         {
                             // Create a new Excel application and workbook
