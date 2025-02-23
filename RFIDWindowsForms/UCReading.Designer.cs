@@ -45,7 +45,7 @@
             this.txt_reader.Location = new System.Drawing.Point(137, 155);
             this.txt_reader.Name = "txt_reader";
             this.txt_reader.Size = new System.Drawing.Size(246, 34);
-            this.txt_reader.TabIndex = 1;
+            this.txt_reader.TabIndex = 0;
             this.txt_reader.TextChanged += new System.EventHandler(this.txt_reader_TextChanged);
             // 
             // label1
@@ -53,7 +53,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label1.Location = new System.Drawing.Point(98, 97);
+            this.label1.Location = new System.Drawing.Point(98, 57);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(328, 32);
             this.label1.TabIndex = 29;
@@ -127,11 +127,10 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox txt_reader;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btn_info_read;
         private System.Windows.Forms.DataGridView dataGridView_read;
+        public System.Windows.Forms.TextBox txt_reader;
     }
 }

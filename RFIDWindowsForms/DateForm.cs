@@ -22,33 +22,11 @@ namespace RFIDWindowsForms
         {
 
             DateTime start = dateTimePicker1.Value;
-            string startDay = start.Day.ToString();
-            string startMonth = start.Month.ToString();
-            string startYear = start.Year.ToString();
-            string startTime = $"{startDay}.{startMonth}.{startYear}";
+            string startTime = start.ToString("dd.MM.yyyy");
 
 
             DateTime end = dateTimePicker2.Value;
-            string endDay = start.Day.ToString();
-            string endMonth = start.Month.ToString();
-            string endYear = start.Year.ToString();
-            string endTime = $"{startDay}.{startMonth}.{startYear}";
-/*
-            using (SQLiteConnection conn = new SQLiteConnection())
-            {
-                conn.Open();
-
-                string queryString = @"SELECT Date, FirstName, SecondName, LastName, RFID
-                                    FROM employees AS e
-                                    JOIN date AS d ON e.id = d.id
-                                    WHERE Date BETWEEN @start AND @end";
-
-
-            }
-*/
-
-
-
+            string endTime = end.ToString("dd.MM.yyyy");
 
 
             SaveFileDialog sfd = new SaveFileDialog();

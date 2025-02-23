@@ -49,21 +49,20 @@ namespace RFIDWindowsForms
                         //dataGridView_read.DataSource = dbh.fillTable();
                         //dataGridView_read.Rows.Clear();
                         dbh.timeRead(txt_reader.Text);
+                        label1.ForeColor = Color.GhostWhite;
+                        label1.Text = "ЧЕТЕНЕ НА ЧИП\nУСПЕШНО";
+                        txt_reader.Text = "";
                     }
                     catch (Exception ex)
                     {
                         MessageBox.Show($"Can not show data\n\n{ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-/*
-                    txt_reader.Text = "";
-                    label1.ForeColor = SystemColors.ControlText;
-                    label1.Text = "ДОБРЕ ДОШЛИ";
- */
                 }
                 else
                 {
                     label1.ForeColor = Color.Red;
-                    label1.Text = "ОПИТАЙ ПАК";
+                    label1.Text = "ГРЕШЕН / НЕПОЗНАТ ЧИП\nОПИТАЙ ПАК";
+                    txt_reader.Text = "";
                 }
             }
         }

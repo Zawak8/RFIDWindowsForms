@@ -38,7 +38,7 @@ namespace RFIDWindowsForms
                             RFID TEXT UNIQUE NOT NULL
                         );";
                     string createDateTableQuery = @"
-                        CREATE TABLE IF NOT EXISTS date (
+                        CREATE TABLE IF NOT EXISTS dates (
                             Id INTEGER PRIMARY KEY AUTOINCREMENT,
                             Date TEXT NOT NULL, 
                             EmployeeRFID TEXT NOT NULL,
@@ -48,26 +48,26 @@ namespace RFIDWindowsForms
                     {
                         command.CommandText = createEmployesTableQuery;
                         command.ExecuteNonQueryAsync();
-                        
+
                         command.CommandText = createDateTableQuery;
                         command.ExecuteNonQueryAsync();
                     }
                 }
             }
         }
-
+        //Inserting new RFID
         internal void insertSqlRfid(string firstName, string secondName, string lastName, string chip)
         {
             string queryInsertEmployee = $"INSERT INTO employees(FirstName, SecondName, LastName, RFID)" +
                                 $"VALUES(@FirstName, @SecondName, @LastName, @RFID)";
             try
             {
-                
+
                 // Open a new database connection
                 using (var connection = new SQLiteConnection(connectionString))
                 {
                     connection.Open();
-                    
+
                     // Bind parameters values
                     using (var insertDataCommand = new SQLiteCommand(queryInsertEmployee, connection))
                     {
@@ -76,7 +76,7 @@ namespace RFIDWindowsForms
                         insertDataCommand.Parameters.AddWithValue("@LastName", lastName);
                         insertDataCommand.Parameters.AddWithValue("@RFID", chip);
 
-                    // Execute the INSERT statement
+                        // Execute the INSERT statement
                         var rowInserted = insertDataCommand.ExecuteNonQueryAsync();
                     }
                     connection.Close();
@@ -87,7 +87,7 @@ namespace RFIDWindowsForms
                 MessageBox.Show(ex.Message);
             }
         }
-        
+
         internal string findFirstName(string chip)
         {
             string firstName = "";
@@ -114,7 +114,7 @@ namespace RFIDWindowsForms
             }
             return firstName;
         }
-        
+
         internal string findSecondName(string chip)
         {
             string secondName = "";
@@ -141,7 +141,7 @@ namespace RFIDWindowsForms
             }
             return secondName;
         }
-        
+
         internal string findLastName(string chip)
         {
             string lastName = "";
@@ -168,15 +168,15 @@ namespace RFIDWindowsForms
             }
             return lastName;
         }
-        
+        //GridView for new RFID
         internal System.Data.DataTable showDataChanges(string chip)
         {
             string firstName = "";
             string secondName = "";
             string lastName = "";
-            
+
             var dt = new System.Data.DataTable();
-            
+
             try
             {
                 firstName = findFirstName(chip);
@@ -195,18 +195,18 @@ namespace RFIDWindowsForms
             }
             return dt;
         }
-        
+        //GridView for searched Name by RFID
         internal string findEmployeeNameByRfid(string chip)
         {
             string fullName = "";
-            
+
             try
             {
                 fullName = findFirstName(chip) + " " + findLastName(chip);
             }
             catch (Exception e)
             {
-                MessageBox.Show($"Не намерен потребител\n\n{e.Message}","ERROR");
+                MessageBox.Show($"Не намерен потребител\n\n{e.Message}", "ERROR");
             }
 
             return fullName;
@@ -226,7 +226,7 @@ namespace RFIDWindowsForms
             adapter.Fill(dt);
             return dt;
         }
-
+        //Changing data in DataBase 
         internal void update(string firstName, string secondName, string lastName, string rfid)
         {
             SQLiteConnection conn = new SQLiteConnection(connectionString);
@@ -243,7 +243,7 @@ namespace RFIDWindowsForms
             cmd.Parameters.AddWithValue("@rfid", rfid);
             cmd.ExecuteNonQuery();
         }
-
+        //Search RFID
         internal string findRFID(string chip)
         {
             string rfid = "";
@@ -260,7 +260,17 @@ namespace RFIDWindowsForms
                     using (SQLiteCommand command = new SQLiteCommand(findRFIDQuery, connection))
                     {
                         command.Parameters.Add(new SQLiteParameter("@rfid", chip));
-                        rfid = command.ExecuteScalar().ToString();
+                        try
+                        {
+                            rfid = command.ExecuteScalar().ToString();
+                        }
+                        catch (Exception)
+                        {
+                            MessageBox.Show("Нов или погрешен чип бе използван.\nМоля опитайте с друг чип.",
+                                "ГРЕШЕН ЧИП",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Hand);
+                        }
                     }
                 }
             }
@@ -270,24 +280,20 @@ namespace RFIDWindowsForms
             }
             return rfid;
         }
-
+        //Inserting date for RFID in DataBase
         internal void timeRead(string rfid)
         {
             SQLiteConnection connection = new SQLiteConnection(connectionString);
-            
-            connection.Open();
-            
-            DateTime dateTime = DateTime.Now;
-            
-            string day = dateTime.Day.ToString();
-            string month = dateTime.Month.ToString();
-            string year = dateTime.Year.ToString();
-                        
-            string time = $"{day}.{month}.{year}";
 
-            string query = @"INSERT INTO date(Date, EmployeeRFID)
+            connection.Open();
+
+            DateTime dateTime = DateTime.Now;
+
+            string time = dateTime.ToString("yyyy-MM-dd");
+
+            string query = @"INSERT INTO dates(Date, EmployeeRFID)
                                 VALUES(@date, @rfid)";
-            
+
             SQLiteCommand command = new SQLiteCommand(query, connection);
             command.Parameters.AddWithValue("@date", time);
             command.Parameters.AddWithValue("@rfid", rfid);
@@ -295,72 +301,93 @@ namespace RFIDWindowsForms
             command.ExecuteNonQuery();
             connection.Close();
         }
-
+        //Creating Excel file on pc
         internal void export(string path, string start, string end)
         {
-            string currentdatetime = DateTime.Now.ToString("ddMMyyyy");
-            string queryString = @"SELECT Date, FirstName, SecondName, LastName, RFID
+            string queryString = @"SELECT DISTINCT Date, concat(FirstName, ' ', SecondName, ' ', LastName) FullName, RFID
                                     FROM employees AS e
-                                    JOIN date AS d ON e.id = d.id
-                                    WHERE Date BETWEEN @start AND @end";
-            //string filePath = @"Export.XLSX";
-            
+                                    JOIN dates AS d ON e.RFID = d.EmployeeRFID
+                                    WHERE Date BETWEEN @start AND @end
+                                    GROUP BY Date, FirstName, SecondName, LastName, RFID;";
+
+            Application excelApp = null;
+            Workbook excelWorkbook = null;
+
             try
             {
-                // Connect to the SQL Server database and retrieve the data you want to export
                 using (SQLiteConnection connection = new SQLiteConnection(connectionString))
                 {
                     connection.Open();
                     using (SQLiteCommand command = new SQLiteCommand(queryString, connection))
                     {
-///my code starts
-                        command.Parameters.AddWithValue("@start", start);
-                        command.Parameters.AddWithValue("@end", end);
-                        //command.ExecuteNonQuery();
+                        // Convert strings to proper date format for SQLite
+                        DateTime startDate = DateTime.ParseExact(start, "dd.MM.yyyy", null);
+                        DateTime endDate = DateTime.ParseExact(end, "dd.MM.yyyy", null);
 
+                        command.Parameters.AddWithValue("@start", startDate.ToString("yyyy-MM-dd"));
+                        command.Parameters.AddWithValue("@end", endDate.ToString("yyyy-MM-dd"));
 
-///my code stops
                         using (SQLiteDataReader reader = command.ExecuteReader())
                         {
-                            // Create a new Excel application and workbook
-                            Application excelApp = new Application();
-                            Workbook excelWorkbook = excelApp.Workbooks.Add();
-                            Worksheet excelWorksheet = excelWorkbook.Worksheets[1];
-
-                            // Add the headers to the first row
-                            int col = 1;
-                            for (int i = 0; i < reader.FieldCount; i++)
+                            if (!reader.HasRows)
                             {
-                                excelWorksheet.Cells[1, col].Value2 = reader.GetName(i);
-                                col++;
+                                MessageBox.Show("No data found for the specified date range.");
+                                return;
                             }
 
-                            // Iterate through the rows of data and insert them into the worksheet, starting from the second row
+                            excelApp = new Application();
+                            excelWorkbook = excelApp.Workbooks.Add();
+                            Worksheet excelWorksheet = excelWorkbook.Worksheets[1];
+
+                            // Add headers
+                            for (int i = 0; i < reader.FieldCount; i++)
+                            {
+                                excelWorksheet.Cells[1, i + 1].Value2 = reader.GetName(i);
+                            }
+
+                            // Add data
                             int row = 2;
                             while (reader.Read())
                             {
-                                col = 1;
                                 for (int i = 0; i < reader.FieldCount; i++)
                                 {
-                                    excelWorksheet.Cells[row, col].Value2 = reader[i];
-                                    col++;
+                                    var value = reader[i]?.ToString();
+                                    // Convert dates back to readable format for Excel
+                                    if (i == 0 && DateTime.TryParse(value, out DateTime date))
+                                    {
+                                        value = date.ToString("dd.MM.yyyy");
+                                    }
+                                    excelWorksheet.Cells[row, i + 1].Value2 = value;
                                 }
                                 row++;
                             }
 
-                            // Save the workbook and close the Excel application
                             excelWorkbook.SaveAs(path);
-                            excelWorkbook.Close();
-                            excelApp.Quit();
                         }
                     }
                 }
             }
-
-            catch (Exception exception)
+            catch (Exception ex)
             {
-                MessageBox.Show(exception.Message);
+                MessageBox.Show($"Error: {ex.Message}");
             }
+            finally
+            {
+                if (excelWorkbook != null)
+                {
+                    excelWorkbook.Close(false);
+                    System.Runtime.InteropServices.Marshal.ReleaseComObject(excelWorkbook);
+                }
+                if (excelApp != null)
+                {
+                    excelApp.Quit();
+                    System.Runtime.InteropServices.Marshal.ReleaseComObject(excelApp);
+                }
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
+            }
+
         }
+
     }
 }

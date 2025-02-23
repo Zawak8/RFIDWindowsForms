@@ -19,6 +19,7 @@ namespace RFIDWindowsForms
         public Form1()
         {
             InitializeComponent();
+            ucReading.txt_reader.Select();
         }
 
         private void Form1_Load(object sender, EventArgs e)
